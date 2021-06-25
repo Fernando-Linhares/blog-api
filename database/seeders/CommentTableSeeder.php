@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Comment;
 
-class DatabaseSeeder extends Seeder
+class CommentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      (new PostTableSeeder)->run();
-      (new CommentTableSeeder)->run();
+       Comment::factory(10)->create();
     }
 }

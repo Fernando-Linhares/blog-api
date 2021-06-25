@@ -3,11 +3,9 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class ResourceTest extends TestCase
+class PostsResourceTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
      * @return void
      */
     public function testIndex()

@@ -22,3 +22,5 @@ $router->group(['prefix'=>'/blog_tail'],function()use($router){
     $router->patch('/{id}/update/image',"Controller@updateImage");
     $router->put('/{id}/update',"Controller@update");
 });
+$router->get('/comments',"CommentsController@comments");
+$router->post('/comments/send', "CommentsController@sendComments");
