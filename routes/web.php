@@ -12,15 +12,18 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->group(['prefix'=>'/blog_tail'],function()use($router){
-    $router->get('/', "Controller@index");
-    $router->get('/{id}/select',"Controller@select");
-    $router->delete('/{id}/delete',"Controller@destroy");
-    $router->post('/create',"Controller@create");
-    $router->patch('/{id}/update/title',"Controller@updateTitle");
-    $router->patch('/{id}/update/text',"Controller@updateContent");
-    $router->patch('/{id}/update/image',"Controller@updateImage");
-    $router->put('/{id}/update',"Controller@update");
+$router->group(['prefix'=>'/blog_tail', 'middleware'=>'auth'], function()use($router){
+    $router->get('/', "ResourceController@index");
+    $router->get('/{id}/select',"ResourceController@select");
+    $router->delete('/{id}/delete',"ResourceController@destroy");
+    $router->post('/create',"ResourceController@create");
+    $router->patch('/{id}/update/title',"ResourceController@updateTitle");
+    $router->patch('/{id}/update/text',"ResourceController@updateContent");
+    $router->patch('/{id}/update/image',"ResourceController@updateImage");
+    $router->put('/{id}/update',"ResourceResourceController@update");
+    $router->get('/comments',"CommentsController@comments");
+    $router->post('/comments/send', "CommentsController@sendComments");
+    $router->get('/get-key',"AuthController@me");    
 });
-$router->get('/comments',"CommentsController@comments");
-$router->post('/comments/send', "CommentsController@sendComments");
+$router->post('login', "AuthController@login");
+$router->post('register', "AuthController@register");

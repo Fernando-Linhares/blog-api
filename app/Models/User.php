@@ -35,12 +35,12 @@ JWTSubject
         'password',
     ];
 
-    public function getJWTIndentifier()
+    public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
-    public function getJWTCustomCaims()
+    public function getJWTCustomClaims()
     {
         return [];
     }
